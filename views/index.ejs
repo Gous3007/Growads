@@ -11,532 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <style>
-    body,
-    html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .hero-section {
-      background-image: url('/images/assest_1.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 100vh;
-      position: relative;
-      color: white;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 0;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100%;
-      text-align: left;
-      padding: 0 15px;
-      max-width: 650px;
-    }
-
-    .navbar {
-      padding: 15px 0;
-      z-index: 100;
-      /* Increased z-index for navbar */
-      width: 100%;
-      position: absolute;
-      top: 0;
-    }
-
-    .navbar-brand {
-      font-weight: bold;
-      color: white !important;
-    }
-
-    .navbar-brand img {
-      height: 80px;
-      margin-top: -5px;
-    }
-
-    .nav-link {
-      color: white !important;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: #ff5722 !important;
-      transform: translateY(-2px);
-    }
-
-    /* Only apply background in mobile view */
-    @media (max-width: 991px) {
-      .navbar-collapse {
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 5px;
-        padding: 10px;
-      }
-    }
-
-    /* Desktop navbar should be transparent */
-    @media (min-width: 992px) {
-      .navbar-collapse {
-        background-color: transparent;
-      }
-    }
-
-    .btn-custom {
-      background-color: #092349;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(255, 87, 34, 0.5);
-    }
-
-    .btn-custom:hover {
-      background-color: #e64a19;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255, 87, 34, 0.6);
-    }
-
-    .heading-primary {
-      font-weight: 700;
-      margin-bottom: 25px;
-      line-height: 1.3;
-    }
-
-    .text-highlight {
-      color: #ff5722;
-    }
-
-    /* Letter animation for heading */
-    .animated-text span {
-      display: inline-block;
-    }
-
-    /* Fix navbar toggle issue */
-    .navbar-collapse.show,
-    .navbar-collapse.collapsing {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .hero-content-wrapper {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      /* justify-content: center; */
-      padding-top: 80px;
-      /* Add padding to account for navbar height */
-    }
-
-    @media (max-width: 992px) {
-      .content {
-        padding: 0 30px;
-      }
-
-      .navbar-brand img {
-        height: 60px;
-      }
-
-      .navbar-collapse {
-        margin-top: 10px;
-      }
-
-      /* Center nav items in mobile view */
-      .navbar-nav {
-        width: 100%;
-        text-align: center;
-      }
-
-      .navbar-nav .nav-item {
-        display: block;
-        width: 100%;
-        text-align: center;
-      }
-
-      .ms-auto {
-        margin-left: 0 !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-link {
-        margin-left: 0;
-        text-align: center;
-        padding: 10px 0;
-      }
-
-      .heading-primary {
-        font-size: 2rem;
-      }
-
-      .content {
-        text-align: center;
-        align-items: center;
-        padding-top: 0;
-        justify-content: center;
-      }
-
-      .hero-content-wrapper {
-        padding-top: 50px;
-        padding-bottom: 50px;
-        min-height: 100%;
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .heading-primary {
-        font-size: 1.7rem;
-      }
-
-      .lead {
-        font-size: 1rem;
-      }
-
-      .btn-custom {
-        padding: 10px 20px;
-        font-size: 1rem;
-      }
-    }
-
-    /* 
-    about us section */
-
-    .overflow-hidden {
-      overflow: hidden;
-    }
-
-    .section-header .text-primary,
-    .text-primary {
-      color: #ff5722 !important;
-    }
-
-    .bg-primary {
-      background-color: #ff5722 !important;
-    }
-
-    .border-primary {
-      border-color: #ff5722 !important;
-    }
-
-    .bg-primary.bg-opacity-10 {
-      background-color: rgba(255, 87, 34, 0.1) !important;
-    }
-
-    .image-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      position: relative;
-    }
-
-    .image-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-
-    .image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.3s ease;
-    }
-
-    .image-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .image-card:hover {
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      transform: translateY(-5px);
-    }
-
-    .experience-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      margin-top: 15px;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-    }
-
-    .experience-card:hover {
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      transform: translateY(-5px);
-    }
-
-    .icon-box {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 87, 34, 0.1);
-      border-radius: 12px;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
-
-    .icon-box i {
-      font-size: 1.5rem;
-      color: #ff5722;
-    }
-
-    .feature-item {
-      margin-bottom: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .feature-item:hover {
-      transform: translateX(5px);
-    }
-
-    .feature-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-    }
-
-    .bg-accent {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background-color: rgba(255, 87, 34, 0.05);
-      border-radius: 50%;
-      z-index: -1;
-    }
-
-    .bg-accent-1 {
-      top: -150px;
-      right: -150px;
-    }
-
-    .bg-accent-2 {
-      bottom: -150px;
-      left: -150px;
-      background-color: rgba(9, 35, 73, 0.05);
-    }
-
-    /* Height adjustments for images */
-    .tall-image {
-      height: 100%;
-    }
-
-    .short-image {
-      height: calc(100% - 90px);
-      /* Accounting for experience card height */
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 991px) {
-      .image-grid {
-        margin-top: 30px;
-      }
-    }
-
-    @media (max-width: 767px) {
-      .image-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .experience-card {
-        padding: 15px;
-        margin-top: 10px;
-      }
-
-      .icon-box {
-        width: 40px;
-        height: 40px;
-      }
-
-      .feature-item {
-        margin-bottom: 15px;
-      }
-    }
-
-    @media (max-width: 575px) {
-      .image-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .experience-card {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .icon-box {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-    }
-
-    /* Custom Styles for Services Section */
-    .shadow-sm-hover {
-      transition: all 0.3s ease;
-    }
-
-    .shadow-sm-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
-    }
-
-    .icon-wrapper {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .transition-all {
-      transition: all 0.3s ease;
-    }
-
-    /* Custom styles for lead generation section */
-    /* Custom responsive styles */
-    @media (max-width: 767.98px) {
-      #lead-generation {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-
-      #lead-generation .card {
-        margin-bottom: 1.5rem !important;
-      }
-
-      #lead-generation img {
-        min-height: 250px !important;
-      }
-
-      #lead-generation .position-absolute {
-        position: relative !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        gap: 1rem !important;
-        margin-top: 1rem !important;
-        bottom: auto !important;
-        right: auto !important;
-        left: auto !important;
-      }
-
-      #lead-generation .bg-white {
-        min-width: 100px !important;
-        padding: 0.75rem !important;
-      }
-
-      #lead-generation .display-6 {
-        font-size: 1.75rem !important;
-      }
-    }
-
-    @media (min-width: 768px) {
-      #lead-generation .position-absolute {
-        flex-direction: column !important;
-        align-items: flex-end !important;
-        gap: 0.5rem !important;
-      }
-    }
-
-    #lead-generation .card {
-      transition: transform 0.3s ease;
-    }
-
-    #lead-generation .card:hover {
-      transform: translateY(-5px);
-    }
-
-    #lead-generation .input-group-text {
-      transition: all 0.3s ease;
-    }
-
-    #lead-generation .form-control:focus+.input-group-text {
-      color: var(--bs-primary) !important;
-    }
-
-  /* Custom Footer Styles */
-  .text-white-70 {
-    color: rgba(255, 255, 255, 0.7) !important;
-  }
-  
-  .text-white-50 {
-    color: rgba(255, 255, 255, 0.5) !important;
-  }
-  
-  .text-white-30 {
-    color: rgba(255, 255, 255, 0.3) !important;
-  }
-  
-  .hover-white:hover {
-    color: white !important;
-  }
-  
-  .hover-primary:hover {
-    color: var(--bs-primary) !important;
-    transform: translateX(3px);
-    transition: all 0.2s ease;
-  }
-  
-  .footer-logo h2 {
-    font-size: 1.75rem;
-    letter-spacing: 0.5px;
-  }
-  
-  .social-icons a {
-    display: inline-block;
-    transition: all 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    color: var(--bs-primary) !important;
-    transform: translateY(-2px);
-  }
-  
-  .bi::before {
-    vertical-align: middle;
-  }
-  
-  footer a {
-    transition: all 0.2s ease;
-  }
-    
-  </style>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
@@ -887,138 +362,111 @@
     </div>
   </section>
 
- <!-- Modern Footer with Better Color Contrast -->
-<footer class="bg-dark text-white pt-5 pb-4">
-  <div class="container">
-    <div class="row g-4">
-      <!-- Company Info -->
-      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-        <div class="footer-logo mb-3">
-          <h2 class="fw-bold text-white mb-0">Grow<span class="text-primary">ads123</span></h2>
-          <p class="text-primary mb-2 small">Digital Marketing Experts</p>
+  <!-- Modern Footer with Better Color Contrast -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Company Info -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <div class="footer-logo mb-3">
+            <h2 class="fw-bold text-white mb-0">Grow<span class="text-primary">ads123</span></h2>
+            <p class="text-primary mb-2 small">Digital Marketing Experts</p>
+          </div>
+          <p class="text-white-70 mb-4">
+            We drive growth through innovative digital marketing solutions and data-driven advertising strategies.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-twitter-x fs-5"></i></a>
+          </div>
         </div>
-        <p class="text-white-70 mb-4">
-          We drive growth through innovative digital marketing solutions and data-driven advertising strategies.
-        </p>
-        <div class="social-icons">
-          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-facebook fs-5"></i></a>
-          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-instagram fs-5"></i></a>
-          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-linkedin fs-5"></i></a>
-          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-twitter-x fs-5"></i></a>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase fw-bold mb-4 text-white">Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Facebook
+                Ads</a></li>
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Instagram
+                Ads</a></li>
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Google
+                Ads</a></li>
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">SEO
+                Services</a></li>
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Content
+                Marketing</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase fw-bold mb-4 text-white">Resources</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Case
+                Studies</a></li>
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Blog</a>
+            </li>
+            <li class="mb-2"><a href="#"
+                class="text-white-70 text-decoration-none hover-primary d-block py-1">Webinars</a></li>
+            <li class="mb-2"><a href="#"
+                class="text-white-70 text-decoration-none hover-primary d-block py-1">Templates</a></li>
+            <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Help
+                Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-uppercase fw-bold mb-4 text-white">Contact Us</h5>
+          <ul class="list-unstyled text-white-70">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-geo-alt-fill text-primary me-3 mt-1"></i>
+              <span>123 Marketing Ave, Ad City, DC 10001</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-telephone-fill text-primary me-3 mt-1"></i>
+              <span>+1 (234) 567-8900</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-envelope-fill text-primary me-3 mt-1"></i>
+              <span>hello@growads123.com</span>
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="bi bi-clock-fill text-primary me-3 mt-1"></i>
+              <span>Mon-Fri: 9AM - 6PM</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase fw-bold mb-4 text-white">Services</h5>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Facebook Ads</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Instagram Ads</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Google Ads</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">SEO Services</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Content Marketing</a></li>
-        </ul>
-      </div>
+      <hr class="my-4 border-secondary">
 
-      <!-- Resources -->
-      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase fw-bold mb-4 text-white">Resources</h5>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Case Studies</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Blog</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Webinars</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Templates</a></li>
-          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Help Center</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="col-lg-4 col-md-6">
-        <h5 class="text-uppercase fw-bold mb-4 text-white">Contact Us</h5>
-        <ul class="list-unstyled text-white-70">
-          <li class="mb-3 d-flex align-items-start">
-            <i class="bi bi-geo-alt-fill text-primary me-3 mt-1"></i>
-            <span>123 Marketing Ave, Ad City, DC 10001</span>
-          </li>
-          <li class="mb-3 d-flex align-items-start">
-            <i class="bi bi-telephone-fill text-primary me-3 mt-1"></i>
-            <span>+1 (234) 567-8900</span>
-          </li>
-          <li class="mb-3 d-flex align-items-start">
-            <i class="bi bi-envelope-fill text-primary me-3 mt-1"></i>
-            <span>hello@growads123.com</span>
-          </li>
-          <li class="d-flex align-items-start">
-            <i class="bi bi-clock-fill text-primary me-3 mt-1"></i>
-            <span>Mon-Fri: 9AM - 6PM</span>
-          </li>
-        </ul>
+      <!-- Copyright & Legal -->
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="small text-white-50 mb-0">&copy; 2023 Growads123. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="list-inline small mb-0">
+            <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Privacy
+                Policy</a></li>
+            <li class="list-inline-item mx-1 text-white-30">·</li>
+            <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Terms</a>
+            </li>
+            <li class="list-inline-item mx-1 text-white-30">·</li>
+            <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Cookies</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-
-    <hr class="my-4 border-secondary">
-
-    <!-- Copyright & Legal -->
-    <div class="row align-items-center">
-      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-        <p class="small text-white-50 mb-0">&copy; 2023 Growads123. All rights reserved.</p>
-      </div>
-      <div class="col-md-6 text-center text-md-end">
-        <ul class="list-inline small mb-0">
-          <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Privacy Policy</a></li>
-          <li class="list-inline-item mx-1 text-white-30">·</li>
-          <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Terms</a></li>
-          <li class="list-inline-item mx-1 text-white-30">·</li>
-          <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Cookies</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom Animation Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Animate heading text by letter
-      const headingText = document.querySelector('.animated-text');
-      const text = headingText.textContent;
-      headingText.innerHTML = '';
-
-      // Add each letter with animation
-      for (let i = 0; i < text.length; i++) {
-        const span = document.createElement('span');
-        span.textContent = text.charAt(i) === ' ' ? ' ' : text.charAt(i);
-        span.style.animationDelay = (0.1 + i * 0.03) + 's';
-        span.classList.add('animate__animated', 'animate__fadeIn');
-        headingText.appendChild(span);
-      }
-
-      // Hover effect for feature items
-      const featureItems = document.querySelectorAll('.feature-item');
-      featureItems.forEach(item => {
-        item.addEventListener('mouseenter', function () {
-          this.style.transform = 'translateX(5px)';
-        });
-        item.addEventListener('mouseleave', function () {
-          this.style.transform = 'translateX(0)';
-        });
-      });
-
-      // Hover effect for images
-      const imageCards = document.querySelectorAll('.image-card');
-      imageCards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-          this.querySelector('img').style.transform = 'scale(1.05)';
-        });
-        card.addEventListener('mouseleave', function () {
-          this.querySelector('img').style.transform = 'scale(1)';
-        });
-      });
-    });
-  </script>
+  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>
