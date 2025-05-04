@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Growads</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts & Animate.css -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-section {
+      background-image: url('/images/assest_1.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      position: relative;
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+      text-align: left;
+      padding: 0 15px;
+      max-width: 650px;
+    }
+
+    .navbar {
+      padding: 15px 0;
+      z-index: 100;
+      /* Increased z-index for navbar */
+      width: 100%;
+      position: absolute;
+      top: 0;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: white !important;
+    }
+
+    .navbar-brand img {
+      height: 80px;
+      margin-top: -5px;
+    }
+
+    .nav-link {
+      color: white !important;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ff5722 !important;
+      transform: translateY(-2px);
+    }
+
+    /* Only apply background in mobile view */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+        padding: 10px;
+      }
+    }
+
+    /* Desktop navbar should be transparent */
+    @media (min-width: 992px) {
+      .navbar-collapse {
+        background-color: transparent;
+      }
+    }
+
+    .btn-custom {
+      background-color: #092349;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(255, 87, 34, 0.5);
+    }
+
+    .btn-custom:hover {
+      background-color: #e64a19;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(255, 87, 34, 0.6);
+    }
+
+    .heading-primary {
+      font-weight: 700;
+      margin-bottom: 25px;
+      line-height: 1.3;
+    }
+
+    .text-highlight {
+      color: #ff5722;
+    }
+
+    /* Letter animation for heading */
+    .animated-text span {
+      display: inline-block;
+    }
+
+    /* Fix navbar toggle issue */
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .hero-content-wrapper {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      /* justify-content: center; */
+      padding-top: 80px;
+      /* Add padding to account for navbar height */
+    }
+
+    @media (max-width: 992px) {
+      .content {
+        padding: 0 30px;
+      }
+
+      .navbar-brand img {
+        height: 60px;
+      }
+
+      .navbar-collapse {
+        margin-top: 10px;
+      }
+
+      /* Center nav items in mobile view */
+      .navbar-nav {
+        width: 100%;
+        text-align: center;
+      }
+
+      .navbar-nav .nav-item {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .ms-auto {
+        margin-left: 0 !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-link {
+        margin-left: 0;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .heading-primary {
+        font-size: 2rem;
+      }
+
+      .content {
+        text-align: center;
+        align-items: center;
+        padding-top: 0;
+        justify-content: center;
+      }
+
+      .hero-content-wrapper {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        min-height: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .heading-primary {
+        font-size: 1.7rem;
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+
+      .btn-custom {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+    }
+
+    /* 
+    about us section */
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .section-header .text-primary,
+    .text-primary {
+      color: #ff5722 !important;
+    }
+
+    .bg-primary {
+      background-color: #ff5722 !important;
+    }
+
+    .border-primary {
+      border-color: #ff5722 !important;
+    }
+
+    .bg-primary.bg-opacity-10 {
+      background-color: rgba(255, 87, 34, 0.1) !important;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      position: relative;
+    }
+
+    .image-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-card:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .experience-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .experience-card:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .icon-box {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 87, 34, 0.1);
+      border-radius: 12px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .icon-box i {
+      font-size: 1.5rem;
+      color: #ff5722;
+    }
+
+    .feature-item {
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateX(5px);
+    }
+
+    .feature-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+
+    .bg-accent {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background-color: rgba(255, 87, 34, 0.05);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .bg-accent-1 {
+      top: -150px;
+      right: -150px;
+    }
+
+    .bg-accent-2 {
+      bottom: -150px;
+      left: -150px;
+      background-color: rgba(9, 35, 73, 0.05);
+    }
+
+    /* Height adjustments for images */
+    .tall-image {
+      height: 100%;
+    }
+
+    .short-image {
+      height: calc(100% - 90px);
+      /* Accounting for experience card height */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 991px) {
+      .image-grid {
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .image-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .experience-card {
+        padding: 15px;
+        margin-top: 10px;
+      }
+
+      .icon-box {
+        width: 40px;
+        height: 40px;
+      }
+
+      .feature-item {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .image-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .experience-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .icon-box {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* Custom Styles for Services Section */
+    .shadow-sm-hover {
+      transition: all 0.3s ease;
+    }
+
+    .shadow-sm-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .icon-wrapper {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    /* Custom styles for lead generation section */
+    /* Custom responsive styles */
+    @media (max-width: 767.98px) {
+      #lead-generation {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      #lead-generation .card {
+        margin-bottom: 1.5rem !important;
+      }
+
+      #lead-generation img {
+        min-height: 250px !important;
+      }
+
+      #lead-generation .position-absolute {
+        position: relative !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 1rem !important;
+        margin-top: 1rem !important;
+        bottom: auto !important;
+        right: auto !important;
+        left: auto !important;
+      }
+
+      #lead-generation .bg-white {
+        min-width: 100px !important;
+        padding: 0.75rem !important;
+      }
+
+      #lead-generation .display-6 {
+        font-size: 1.75rem !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      #lead-generation .position-absolute {
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        gap: 0.5rem !important;
+      }
+    }
+
+    #lead-generation .card {
+      transition: transform 0.3s ease;
+    }
+
+    #lead-generation .card:hover {
+      transform: translateY(-5px);
+    }
+
+    #lead-generation .input-group-text {
+      transition: all 0.3s ease;
+    }
+
+    #lead-generation .form-control:focus+.input-group-text {
+      color: var(--bs-primary) !important;
+    }
+
+  /* Custom Footer Styles */
+  .text-white-70 {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  .text-white-50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  .text-white-30 {
+    color: rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  .hover-white:hover {
+    color: white !important;
+  }
+  
+  .hover-primary:hover {
+    color: var(--bs-primary) !important;
+    transform: translateX(3px);
+    transition: all 0.2s ease;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.75rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: var(--bs-primary) !important;
+    transform: translateY(-2px);
+  }
+  
+  .bi::before {
+    vertical-align: middle;
+  }
+  
+  footer a {
+    transition: all 0.2s ease;
+  }
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="hero-section">
+    <div class="overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <div class="container">
+        <a class="navbar-brand animate__animated animate__fadeInLeft" href="#">
+          <img src="/images/assest_3.png" alt="Growads Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.2s"><a class="nav-link"
+                href="#">About</a></li>
+            <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.4s"><a class="nav-link"
+                href="#">Services</a></li>
+            <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.6s"><a class="nav-link"
+                href="#">Work</a></li>
+            <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.8s"><a class="nav-link"
+                href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="container hero-content-wrapper">
+      <div class="content animate__animated animate__fadeInLeft animate__delay-1s">
+        <h1 class="heading-primary display-4 animated-text">
+          Grow Your Business With <span class="text-highlight">High-Performance</span> Instagram Ads
+        </h1>
+        <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+          Drive real results with our data-driven approach to Instagram marketing that increases your ROI.
+        </p>
+        <a href="#" class="btn btn-custom mt-4 animate__animated animate__pulse animate__infinite animate__slow">Get
+          Free Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="py-4 py-md-5 bg-light overflow-hidden position-relative">
+    <div class="bg-accent bg-accent-1"></div>
+    <div class="bg-accent bg-accent-2"></div>
+
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <!-- Text Column -->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <div class="section-header mb-4">
+            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill mb-2 d-inline-block">Who We Are</span>
+            <h2 class="h1 fw-bold mb-3" style="color: #092349;">Transforming Brands Through <span
+                class="text-primary d-inline-block">Social Media</span></h2>
+            <div class="border-bottom border-2 border-primary w-25 mb-4"></div>
+          </div>
+
+          <div class="about-content">
+            <p class="lead fs-5 text-muted mb-4">
+              We're a passionate <strong>Meta-certified</strong> team with over 5 years of experience crafting
+              high-impact social campaigns.
+            </p>
+
+            <div class="features-list">
+              <div class="feature-item d-flex align-items-start">
+                <div class="feature-icon bg-primary bg-opacity-10 p-2 rounded-circle me-3">
+                  <i class="bi bi-bar-chart-line-fill text-primary fs-5"></i>
+                </div>
+                <div>
+                  <h5 class="h6 mb-1 fw-semibold">Performance-Driven Campaigns</h5>
+                  <p class="small text-muted mb-0">ROI-focused Meta Ads strategies with real-time optimization</p>
+                </div>
+              </div>
+
+              <div class="feature-item d-flex align-items-start">
+                <div class="feature-icon bg-primary bg-opacity-10 p-2 rounded-circle me-3">
+                  <i class="bi bi-camera-fill text-primary fs-5"></i>
+                </div>
+                <div>
+                  <h5 class="h6 mb-1 fw-semibold">Content That Converts</h5>
+                  <p class="small text-muted mb-0">Scroll-stopping creatives tailored for Instagram & Facebook</p>
+                </div>
+              </div>
+
+              <div class="feature-item d-flex align-items-start">
+                <div class="feature-icon bg-primary bg-opacity-10 p-2 rounded-circle me-3">
+                  <i class="bi bi-people-fill text-primary fs-5"></i>
+                </div>
+                <div>
+                  <h5 class="h6 mb-1 fw-semibold">Community Building</h5>
+                  <p class="small text-muted mb-0">Strategic engagement to grow loyal audiences</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Column -->
+        <div class="col-lg-6 col-md-6">
+          <div class="image-grid">
+            <!-- First image -->
+            <div class="image-card tall-image">
+              <img src="/images/assets_05.png" alt="Social media analytics" class="w-100 h-100 object-fit-cover">
+            </div>
+
+            <!-- Second image + experience box -->
+            <div class="d-flex flex-column">
+              <div class="image-card short-image">
+                <img src="/images/assets_4.png" alt="Instagram content" class="w-100 h-100 object-fit-cover">
+              </div>
+
+              <!-- Experience Card -->
+              <div class="experience-card">
+                <div class="icon-box">
+                  <i class="bi bi-trophy-fill"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">5+ Years Experience</h6>
+                  <small class="text-muted">Trusted by 100+ brands</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section - Modern Redesign -->
+  <section id="services" class="py-5 py-lg-7 position-relative bg-white">
+    <div class="container position-relative z-index-1">
+      <!-- Section Header -->
+      <div class="text-center mb-5 mb-lg-6 px-3">
+        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill mb-3">What We Offer</span>
+        <h2 class="display-5 fw-bold mb-3" style="color: #092349;">Powerful Services to <span class="text-primary">Grow
+            Your Business</span></h2>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+          Comprehensive digital solutions tailored to your unique needs and business goals
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="row g-4 g-lg-5">
+        <!-- Instagram Ads Management -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm-hover overflow-hidden transition-all">
+            <div class="card-body p-4 p-lg-5 position-relative">
+              <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-3 mb-4">
+                <i class="bi bi-instagram fs-4"></i>
+              </div>
+              <h3 class="h4 fw-bold mb-3" style="color: #092349;">Instagram Ads Management</h3>
+              <p class="text-muted mb-0">
+                Complete campaign management from strategy to execution, optimizing for engagement and conversions with
+                visually compelling ads.
+              </p>
+              <div class="position-absolute bottom-0 end-0 p-3">
+                <i class="bi bi-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facebook Marketing Campaigns -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm-hover overflow-hidden transition-all">
+            <div class="card-body p-4 p-lg-5 position-relative">
+              <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-3 mb-4">
+                <i class="bi bi-facebook fs-4"></i>
+              </div>
+              <h3 class="h4 fw-bold mb-3" style="color: #092349;">Facebook Marketing Campaigns</h3>
+              <p class="text-muted mb-0">
+                Data-driven campaigns leveraging Facebook's powerful targeting to reach your ideal customers and
+                maximize advertising ROI.
+              </p>
+              <div class="position-absolute bottom-0 end-0 p-3">
+                <i class="bi bi-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meta Pixel Setup & Analytics -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm-hover overflow-hidden transition-all">
+            <div class="card-body p-4 p-lg-5 position-relative">
+              <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-3 mb-4">
+                <i class="bi bi-graph-up-arrow fs-4"></i>
+              </div>
+              <h3 class="h4 fw-bold mb-3" style="color: #092349;">Meta Pixel & Analytics</h3>
+              <p class="text-muted mb-0">
+                Implementation and monitoring of Meta Pixel to track conversions, optimize ads, and gain valuable
+                customer insights.
+              </p>
+              <div class="position-absolute bottom-0 end-0 p-3">
+                <i class="bi bi-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Walkie-Talkie Solutions -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm-hover overflow-hidden transition-all">
+            <div class="card-body p-4 p-lg-5 position-relative">
+              <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-3 mb-4">
+                <i class="bi bi-broadcast fs-4"></i>
+              </div>
+              <h3 class="h4 fw-bold mb-3" style="color: #092349;">Walkie-Talkie Solutions</h3>
+              <p class="text-muted mb-0">
+                Reliable two-way radio communication systems for seamless team coordination in various operational
+                environments.
+              </p>
+              <div class="position-absolute bottom-0 end-0 p-3">
+                <i class="bi bi-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Website Development -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm-hover overflow-hidden transition-all">
+            <div class="card-body p-4 p-lg-5 position-relative">
+              <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-3 mb-4">
+                <i class="bi bi-code-square fs-4"></i>
+              </div>
+              <h3 class="h4 fw-bold mb-3" style="color: #092349;">Website Development</h3>
+              <p class="text-muted mb-0">
+                Custom, responsive websites designed to convert visitors into customers with optimal user experience and
+                performance.
+              </p>
+              <div class="position-absolute bottom-0 end-0 p-3">
+                <i class="bi bi-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Card -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 bg-primary text-white overflow-hidden">
+            <div class="card-body p-4 p-lg-5 d-flex flex-column justify-content-center position-relative">
+              <h3 class="h4 fw-bold mb-3">Need Custom Solutions?</h3>
+              <p class="mb-4 opacity-75">
+                We specialize in creating tailored digital strategies for unique business challenges.
+              </p>
+              <a href="#contact" class="btn btn-light rounded-pill fw-semibold align-self-start">
+                Get in Touch
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+              <div class="position-absolute bottom-0 end-0 opacity-10" style="font-size: 6rem; ">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Generation Section - Mobile Optimized -->
+  <section id="lead-generation" class="py-4 py-lg-6 bg-light">
+    <div class="container">
+      <div class="row align-items-center gx-lg-5">
+        <!-- Left Side: Image with Metrics -->
+        <div class="col-lg-6 mb-4 mb-lg-0 order-1 order-lg-1">
+          <div class="position-relative rounded-4 overflow-hidden" style="max-width: 600px; margin: 0 auto;">
+            <img src="/images/assest_6.png" alt="Campaign Metrics" class="img-fluid w-100"
+              style="max-height: 500px; min-height: 300px; object-fit: contain;">
+
+            <!-- Metrics Badges - Responsive Positioning -->
+            <div class="position-absolute d-flex flex-column align-items-end"
+              style="bottom: 1rem; right: 1rem; left: 1rem; justify-content: flex-end; flex-direction: row; gap: 0.5rem;">
+              <div class="bg-white p-2 p-sm-3 rounded-3 shadow-sm text-center flex-grow-1" style="max-width: 120px;">
+                <div class="text-primary fw-bold h3 mb-0">10x</div>
+                <div class="text-muted small">ROAS</div>
+              </div>
+              <div class="bg-white p-2 p-sm-3 rounded-3 shadow-sm text-center flex-grow-1" style="max-width: 120px;">
+                <div class="text-dark fw-bold h5 mb-0">100K+</div>
+                <div class="text-muted small">Reach</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Lead Generation Card -->
+        <div class="col-lg-6 mb-4 order-2 order-lg-2">
+          <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="card-body p-3 p-md-4 p-lg-5">
+              <div class="text-center text-md-start mb-3 mb-md-4">
+                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill mb-2">Get Started</span>
+                <h2 class="h3 fw-bold mb-2" style="color: #092349;">Boost Your <span class="text-primary">Lead
+                    Generation</span></h2>
+                <p class="text-muted mb-0">Complete the form for a free consultation</p>
+              </div>
+
+              <form class="needs-validation" novalidate>
+                <div class="row g-2 g-md-3">
+                  <div class="col-md-6 mb-2 mb-md-3">
+                    <label for="name" class="form-label fw-semibold small">Full Name</label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0"><i
+                          class="bi bi-person text-muted"></i></span>
+                      <input type="text" class="form-control form-control-sm" id="name" placeholder="John Doe" required>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-2 mb-md-3">
+                    <label for="email" class="form-label fw-semibold small">Email</label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-light border-end-0"><i
+                          class="bi bi-envelope text-muted"></i></span>
+                      <input type="email" class="form-control form-control-sm" id="email" placeholder="john@example.com"
+                        required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-2 mb-md-3">
+                  <label for="whatsapp" class="form-label fw-semibold small">WhatsApp</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i
+                        class="bi bi-whatsapp text-muted"></i></span>
+                    <input type="tel" class="form-control form-control-sm" id="whatsapp" placeholder="+1 234 567 8900"
+                      required>
+                  </div>
+                  <small class="text-muted">We'll contact you via WhatsApp</small>
+                </div>
+
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="consent" required>
+                  <label class="form-check-label small" for="consent">I agree to receive marketing
+                    communications</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-md w-100 py-2 fw-semibold">
+                  <i class="bi bi-rocket me-2"></i> Get Started
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Modern Footer with Better Color Contrast -->
+<footer class="bg-dark text-white pt-5 pb-4">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Company Info -->
+      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+        <div class="footer-logo mb-3">
+          <h2 class="fw-bold text-white mb-0">Grow<span class="text-primary">ads123</span></h2>
+          <p class="text-primary mb-2 small">Digital Marketing Experts</p>
+        </div>
+        <p class="text-white-70 mb-4">
+          We drive growth through innovative digital marketing solutions and data-driven advertising strategies.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-linkedin fs-5"></i></a>
+          <a href="#" class="text-white-70 hover-white me-3"><i class="bi bi-twitter-x fs-5"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase fw-bold mb-4 text-white">Services</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Facebook Ads</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Instagram Ads</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Google Ads</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">SEO Services</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Content Marketing</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase fw-bold mb-4 text-white">Resources</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Case Studies</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Blog</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Webinars</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Templates</a></li>
+          <li class="mb-2"><a href="#" class="text-white-70 text-decoration-none hover-primary d-block py-1">Help Center</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase fw-bold mb-4 text-white">Contact Us</h5>
+        <ul class="list-unstyled text-white-70">
+          <li class="mb-3 d-flex align-items-start">
+            <i class="bi bi-geo-alt-fill text-primary me-3 mt-1"></i>
+            <span>123 Marketing Ave, Ad City, DC 10001</span>
+          </li>
+          <li class="mb-3 d-flex align-items-start">
+            <i class="bi bi-telephone-fill text-primary me-3 mt-1"></i>
+            <span>+1 (234) 567-8900</span>
+          </li>
+          <li class="mb-3 d-flex align-items-start">
+            <i class="bi bi-envelope-fill text-primary me-3 mt-1"></i>
+            <span>hello@growads123.com</span>
+          </li>
+          <li class="d-flex align-items-start">
+            <i class="bi bi-clock-fill text-primary me-3 mt-1"></i>
+            <span>Mon-Fri: 9AM - 6PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="my-4 border-secondary">
+
+    <!-- Copyright & Legal -->
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <p class="small text-white-50 mb-0">&copy; 2023 Growads123. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <ul class="list-inline small mb-0">
+          <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Privacy Policy</a></li>
+          <li class="list-inline-item mx-1 text-white-30">·</li>
+          <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Terms</a></li>
+          <li class="list-inline-item mx-1 text-white-30">·</li>
+          <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none hover-white">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Animate heading text by letter
+      const headingText = document.querySelector('.animated-text');
+      const text = headingText.textContent;
+      headingText.innerHTML = '';
+
+      // Add each letter with animation
+      for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = text.charAt(i) === ' ' ? ' ' : text.charAt(i);
+        span.style.animationDelay = (0.1 + i * 0.03) + 's';
+        span.classList.add('animate__animated', 'animate__fadeIn');
+        headingText.appendChild(span);
+      }
+
+      // Hover effect for feature items
+      const featureItems = document.querySelectorAll('.feature-item');
+      featureItems.forEach(item => {
+        item.addEventListener('mouseenter', function () {
+          this.style.transform = 'translateX(5px)';
+        });
+        item.addEventListener('mouseleave', function () {
+          this.style.transform = 'translateX(0)';
+        });
+      });
+
+      // Hover effect for images
+      const imageCards = document.querySelectorAll('.image-card');
+      imageCards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+          this.querySelector('img').style.transform = 'scale(1.05)';
+        });
+        card.addEventListener('mouseleave', function () {
+          this.querySelector('img').style.transform = 'scale(1)';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
